@@ -1,0 +1,19 @@
+{
+  "name": "peepernode",
+  "version": "1.0.0",
+  "description": "example api rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toniferr/PeeperNode.git"
+  },
+  "author": "toni ferreiro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toniferr/PeeperNode/issues"
+  },
+  "homepage": "https://github.com/toniferr/PeeperNode#readme"
+}
