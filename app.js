@@ -22,7 +22,12 @@ app.get('/', (req, res) => {
         "<h1>Pagina principal</h2>"
     );
 });
-app.get('/test', (req, res) => {
+app.post('/test/:id', (req, res) => {
+
+    console.log(req.body.name); //va en el cuerpo de la peticion
+    console.log(req.query.web); //va en la url con ?param=
+    console.log(req.params.id); //va de param en url /param
+
     res.status(200).send({
         message: "mensaje desde api de nodejs"
     });
