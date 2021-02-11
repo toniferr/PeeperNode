@@ -64,6 +64,22 @@ var controller = {
                 project
             });
         });
+    },
+
+    getProjects: function(req, res){
+
+        //Project.find({year:2021})  busca projects del año 2021
+        Project.find({}).sort('-year').exec((err, projects) => {           
+            if (err) return res.status(500).send({
+                message: 'Error al obtener projects'
+            });            
+            if (!projects) return res.status(404).send({
+                message: 'No existen projects'
+            });
+            return res.status(200).send({
+                projects
+            });
+        });
     }
 };
 
