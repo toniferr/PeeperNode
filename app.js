@@ -8,7 +8,7 @@ var bodyParser = require('body-parser')
 var app = express();
 
 // cargar archivos rutas
-
+var project_routes = require('./routes/project');
 
 // middlewares
 app.use(bodyParser.urlencoded({extended:false})); 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // CORS
 
 // rutas
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.status(200).send(
         "<h1>Pagina principal</h2>"
     );
@@ -31,7 +31,9 @@ app.post('/test/:id', (req, res) => {
     res.status(200).send({
         message: "mensaje desde api de nodejs"
     });
-});
+}); */
+app.use('/api', project_routes);
+
 
 // exportar
 module.exports = app;
