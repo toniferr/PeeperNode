@@ -1,5 +1,6 @@
 'use strict'
 
+const project = require('../models/project');
 var Project = require('../models/project');
 const { param } = require('../routes/project');
 
@@ -43,6 +44,26 @@ var controller = {
             project: project,
             message: "Metodo saveProject"
         })
+    },
+
+    getProject: function(req, res){
+        var projectId = req.params.id;
+
+        if (projectId == null) return res.status(404).send({
+            message: 'No existe el project'
+        });            
+
+        Project.findById(projectId, (err, project) => {            
+            if (err) return res.status(500).send({
+                message: 'Error al obtener project'
+            });            
+            if (!project) return res.status(404).send({
+                message: 'No existe el project'
+            });
+            return res.status(200).send({
+                project
+            });
+        });
     }
 };
 
