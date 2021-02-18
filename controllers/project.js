@@ -1,10 +1,8 @@
 'use strict'
 
 var Project = require('../models/project');
-
 var fs = require('fs');
 var path = require('path');
-const { exists } = require('../models/project');
 
 var controller = {
     home: function(req, res){
@@ -41,11 +39,6 @@ var controller = {
                 project: projectStored
             });
         });
-
-        return res.status(200).send({
-            project: project,
-            message: "Metodo saveProject"
-        })
     },
 
     getProject: function(req, res){
@@ -119,7 +112,6 @@ var controller = {
 
     uploadImage: function(req, res){
         var projectId = req.params.id;
-        var fileName = 'Imagen no subida...';
 
         if(req.files){
 
@@ -152,7 +144,7 @@ var controller = {
             }
         } else {
             return res.status(200).send({
-                message: fileName
+                message: 'Imagen no subida...'
             });
         }
     },
@@ -161,7 +153,7 @@ var controller = {
         var file = req.params.image;
         var path_file = './uploads/'+file;
         
-        fs.stat(path_file, (exists) => {
+        fs.exists(path_file, (exists) => {
             if (exists){
                 return res.sendFile(path.resolve(path_file));
             } else {
